@@ -1,13 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit"
+import authUISlice from "./authUISlice"
+import authSlice from "./authSlice"
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {},
+    reducer: {
+      auth: authSlice,
+      authUI: authUISlice,
+    },
   })
 }
 
-// Infer the type of makeStore
 export type AppStore = ReturnType<typeof makeStore>
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<AppStore["getState"]>
 export type AppDispatch = AppStore["dispatch"]
