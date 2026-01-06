@@ -7,6 +7,7 @@ interface InputProps {
   placeholder?: string
   errorClassName?: string
   textForTitle?: string
+  disabled?: boolean
 }
 
 const Input: FC<InputProps> = ({
@@ -15,6 +16,7 @@ const Input: FC<InputProps> = ({
   placeholder,
   errorClassName,
   textForTitle,
+  disabled,
 }) => {
   const [field, meta] = useField(name)
 

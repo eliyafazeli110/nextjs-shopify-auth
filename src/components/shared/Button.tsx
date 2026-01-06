@@ -3,6 +3,7 @@ import { FC } from "react"
 interface ButtonProps {
   type: string
   text: string
+  disabled: boolean
 }
 
 const Button: FC<ButtonProps> = ({ text }) => {
