@@ -2,7 +2,7 @@ import { FormikProvider } from "formik"
 import Button from "../shared/Button"
 import Input from "../shared/Input"
 
-export const InnerLoginForm = ({ isVerifying, formik }: any) => {
+const InnerVerifyForm = ({ isVerifying, formik }: any) => {
   return (
     <div className="flex justify-center items-center w-full h-screen bg-gray-900">
       <FormikProvider value={formik}>
@@ -10,21 +10,21 @@ export const InnerLoginForm = ({ isVerifying, formik }: any) => {
           onSubmit={formik.handleSubmit}
           className="flex flex-col justify-center items-start text-center gap-6 p-4 rounded-xl w-100 h-auto bg-black border border-gray-700 text-white"
         >
-          <h1 className="text-4xl w-full my-auto mt-2">ورود</h1>
           <Input
-            textForTitle="لطفا شماره موبایل خود را وارد نمایید"
-            name="phone"
+            textForTitle=""
+            name="code"
             type="text"
-            placeholder=""
-            disabled={isVerifying}
+            placeholder="کد ارسال شده را وارد نمایید"
           />
           <Button
-            type="submit"
-            text={isVerifying ? "در حال ارسال..." : "ادامه"}
             disabled={isVerifying}
+            type="submite"
+            text={isVerifying ? "در حال دریافت..." : "ادامه"}
           />
         </form>
       </FormikProvider>
     </div>
   )
 }
+
+export default InnerVerifyForm

@@ -9,3 +9,8 @@ export interface User {
   id: number
   name: string
 }
+
+export interface VerifyFormValueInterface {
+  code: string
+  token: string
+}
