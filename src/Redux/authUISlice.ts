@@ -1,20 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { RootState } from "./store"
 
-export type PhoneVerificationStep =
-  | "idle"
-  | "enter-phone"
-  | "code-sent"
-  | "verifying"
-  | "verified"
-  | "expired"
+export enum PhoneStep {
+  Idle = "idle",
+  EnterPhone = "enter-phone",
+  CodeSent = "code-sent",
+  Verifying = "verifying",
+  Verified = "verified",
+  Expired = "expired",
+}
 
 interface AuthUIState {
-  phoneStep: PhoneVerificationStep
+  phoneStep: PhoneStep
 }
 
 const initialState: AuthUIState = {
-  phoneStep: "idle",
+  phoneStep: PhoneStep.Idle,
 }
 
 const authUISlice = createSlice({
@@ -22,22 +23,22 @@ const authUISlice = createSlice({
   initialState,
   reducers: {
     startPhoneVerification(state) {
-      state.phoneStep = "enter-phone"
+      state.phoneStep = PhoneStep.EnterPhone
     },
     phoneCodeSent(state) {
-      state.phoneStep = "code-sent"
+      state.phoneStep = PhoneStep.CodeSent
     },
     startVerifyingCode(state) {
-      state.phoneStep = "verifying"
+      state.phoneStep = PhoneStep.Verifying
     },
     phoneVerified(state) {
-      state.phoneStep = "verified"
+      state.phoneStep = PhoneStep.Verified
     },
     phoneVerificationExpired(state) {
-      state.phoneStep = "expired"
+      state.phoneStep = PhoneStep.Expired
     },
     resetPhoneVerification(state) {
-      state.phoneStep = "idle"
+      state.phoneStep = PhoneStep.Idle
     },
   },
 })
